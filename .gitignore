@@ -1,0 +1,13 @@
+# Pastas pesadas que NÃO vão para o GitHub
+frontend/node_modules/
+backend/venv/
+
+# Arquivos de configuração local e chaves de segurança
+.env
+backend/.env
+.vscode/
+
+# Arquivos inúteis que o Windows/Mac criam
+.DS_Store
+Thumbs.db
+__pycache__/
