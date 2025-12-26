@@ -1,93 +1,168 @@
-/* App.css*/
-
-body {
-  background-color: #f4f7f6;
-  color: #333;
-  line-height: 1.6;
+/* Definição de Variáveis de Cor */
+:root {
+  --bg-app: #f8f9fa;
+  --bg-card: #ffffff;
+  --text-main: #2c3e50;
+  --border-color: #ddd;
+  --accent-color: #007bff;
+  --accent-hover: #0056b3;
+  --result-bg: #ffffff;
+  --transition-speed: 0.4s;
 }
 
-.App {
-  background-color: #ffffff;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+.dark {
+  --bg-app: #121212;
+  --bg-card: #1e1e1e;
+  --text-main: #e0e0e0;
+  --border-color: #333;
+  --accent-color: #3700b3;
+  --accent-hover: #4b00d1;
+  --result-bg: #1e1e1e;
+}
+
+/* Transição suave de cores ao trocar o tema */
+.app-container {
+  min-height: 100vh;
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  padding: 2rem;
+}
+
+.content-wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+/* Botão de Tema */
+.theme-toggle {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+/* Radio Cards Customizados */
+.radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.radio-card {
+  padding: 15px;
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
   border-radius: 8px;
-  padding: 30px !important; /* Força o padding sobre o inline style */
-  margin-top: 30px !important;
-  margin-bottom: 30px !important;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.3s ease;
 }
 
-/* --- ESTILOS DA ÁREA DE RESULTADO MARKDOWN --- */
+.radio-card.active {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 10px rgba(0, 123, 255, 0.2);
+}
 
-.markdown-result {
-  background-color: #ffffff;
+.radio-card input {
+  display: none;
+}
+
+/* Input de Texto */
+.main-input {
+  width: 100%;
+  height: 150px;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-card);
+  color: var(--text-main);
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.main-input:focus {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+/* Botão de Processamento com Animação */
+.process-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.process-button:hover:not(:disabled) {
+  background-color: var(--accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.process-button:active {
+  transform: translateY(0);
+}
+
+.process-button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Animação de Fade In para o Resultado */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Estilo do Markdown */
+.markdown-body {
+  background: var(--result-bg);
   padding: 25px;
   border-radius: 8px;
-  border: 1px solid #e1e4e8;
+  border: 1px solid var(--border-color);
+  text-align: left;
 }
 
-/* Títulos dentro do resultado */
-.markdown-result h1, 
-.markdown-result h2, 
-.markdown-result h3 {
-  color: #2c3e50;
-  margin-top: 1.5em;
-  margin-bottom: 0.8em;
-  border-bottom: 1px solid #eaecef;
-  padding-bottom: 0.3em;
-}
-
-/* Citações (Blocos de Alerta da IA) */
-.markdown-result blockquote {
-  border-left: 5px solid #007bff;
-  color: #555;
-  background-color: #f1f8ff;
-  margin: 1.5em 0;
-  padding: 15px 20px;
-  border-radius: 0 4px 4px 0;
-}
-
-/* --- TABELAS PROFISSIONAIS (O Pulo do Gato) --- */
-.markdown-result table {
+.markdown-body table {
   width: 100%;
   border-collapse: collapse;
-  margin: 25px 0;
-  font-size: 0.95em;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  border-radius: 6px;
-  overflow: hidden; /* Para arredondar as pontas da tabela */
+  margin: 1rem 0;
 }
 
-.markdown-result thead tr {
-  background-color: #007bff; /* Azul profissional */
-  color: #ffffff;
-  text-align: left;
-  font-weight: bold;
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border-color);
+  padding: 10px;
 }
 
-.markdown-result th,
-.markdown-result td {
-  padding: 12px 15px;
-  border-bottom: 1px solid #e1e4e8;
-}
-
-/* Efeito "Zebrado" nas linhas */
-.markdown-result tbody tr:nth-of-type(even) {
-  background-color: #f8f9fa;
-}
-
-/* Efeito Hover ao passar o mouse na linha */
-.markdown-result tbody tr:hover {
-  background-color: #e9ecef;
-  transition: background-color 0.2s;
-}
-
-.markdown-result tbody tr:last-of-type {
-  border-bottom: 3px solid #007bff;
-}
-
-/* Código inline e blocos */
-.markdown-result code {
-  background-color: rgba(27,31,35,0.05);
-  padding: 0.2em 0.4em;
-  border-radius: 3px;
-  font-family: monospace;
+.markdown-body th {
+  background: var(--accent-color);
+  color: white;
 }
