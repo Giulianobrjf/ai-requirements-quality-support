@@ -14,7 +14,6 @@ else:
     genai.configure(api_key=api_key)
 
 async def call_ai_api(prompt_text: str) -> str:
-    # Modelos exatamente da sua lista, ordenados por estabilidade/cota
     models_to_try = [
     #    'gemini-2.5-flash',    
     #    'gemini-3-flash',    
