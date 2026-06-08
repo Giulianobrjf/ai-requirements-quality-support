@@ -50,7 +50,7 @@ function App() {
     <div className={`app-container ${darkMode ? 'dark' : 'light'}`}>
       <div className="content-wrapper">
         <header className="header">
-          <h1>Validador de Requisitos</h1>
+          <h1>Validador de Requisitos Inteligente</h1>
           <button 
             className="theme-toggle" 
             onClick={() => setDarkMode(!darkMode)}

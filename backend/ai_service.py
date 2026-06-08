@@ -15,9 +15,9 @@ else:
 
 async def call_ai_api(prompt_text: str) -> str:
     models_to_try = [
-    #    'gemini-2.5-flash',    
-    #    'gemini-3-flash',    
-        'gemma-3-27b-it'      
+        'gemini-2.5-flash',    
+        'gemini-3.1-flash-lite',    
+        'gemma-4-31b'      
     ]
     for model_name in models_to_try:
         try:

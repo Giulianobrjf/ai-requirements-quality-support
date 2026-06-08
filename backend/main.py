@@ -10,7 +10,7 @@ from prompts import get_generation_prompt, get_analysis_prompt
 
 load_dotenv()
 
-app = FastAPI(title="Prototype API")
+app = FastAPI(title="Validador de Requisitos Inteligente")
 
 # Permitir conexão do React (CORS)
 app.add_middleware(
