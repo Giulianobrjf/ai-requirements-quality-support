@@ -50,9 +50,14 @@ def get_generation_prompt(user_story: str) -> str:
 
     --- REGRAS DE GERAÇÃO ---
     1. Se a User Story estiver incompleta (Faltar Ator, Ação ou Valor), use o bloco #Pausa para Refinamento.
-    2. Se estiver completa, gere a tabela de Requisitos Funcionais (RFs).
-    3. Use MoSCoW para prioridade.
-    4. Defina Critérios de Aceitação em formato Gherkin (Dado/Quando/Então).
+    2. Se a entrada corresponder a um requisito técnico ou requisito não funcional, responda EXATAMENTE no formato abaixo:
+    # Requisito Detectado
+    O texto informado foi identificado como um requisito técnico ou requisito não funcional.
+    ## Recomendação
+    Utilize o modo "Auditoria de Qualidade" para realizar a análise do requisito.
+    3. Se estiver completa, gere a tabela de Requisitos Funcionais (RFs).
+    4. Use MoSCoW para prioridade.
+    5. Defina Critérios de Aceitação em formato Gherkin (Dado/Quando/Então).
 
     # Especificação Técnica
 
@@ -73,6 +78,4 @@ def get_generation_prompt(user_story: str) -> str:
     - Quando...
     - Então...
 
-    ---
-    *Nota: Se a entrada for Requisitos Técnicos, avise para usar o modo de Auditoria.*
     """
